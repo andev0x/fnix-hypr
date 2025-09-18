@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  nix = {
+  nix = lib.mkIf pkgs.stdenv.isx86_64 {
     settings = {
 		warn-dirty = false;
 		experimental-features = [ "nix-command" "flakes" ];
