@@ -17,5 +17,5 @@
   };
 
   # Disable lanzaboote for ARM systems
-  boot.lanzaboote.enable = lib.mkForce false;
+  #boot.lanzaboote.enable = lib.mkForce false;
 }

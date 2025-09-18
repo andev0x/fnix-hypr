@@ -2,7 +2,7 @@
 
 {
   virtualisation = {
-    open-vm-tools.enable = true;
+    #open-vm-tools.enable = true;
     spiceUSBRedirection.enable = true;
 
     libvirtd = {
