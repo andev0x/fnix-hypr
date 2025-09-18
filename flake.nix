@@ -12,14 +12,14 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        lanzaboote = {
-            url = "github:nix-community/lanzaboote/v0.3.0";
-
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        # lanzaboote not supported on ARM systems
+        # lanzaboote = {
+        #     url = "github:nix-community/lanzaboote/v0.3.0";
+        #     inputs.nixpkgs.follows = "nixpkgs";
+        # };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, lanzaboote, ... }@inputs:
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
 	let
 	    lib = nixpkgs.lib;
 	    system = "aarch64-linux";
@@ -31,7 +31,7 @@
                 inherit system;
 				modules = [
                     ./system/configuration.nix
-                    lanzaboote.nixosModules.lanzaboote
+                    # lanzaboote.nixosModules.lanzaboote  # Not supported on ARM
 				];
                 specialArgs = {
                     inherit pkgs-unstable;

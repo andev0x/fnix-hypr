@@ -1,35 +1,21 @@
 { config, pkgs, lib, ... }:
 
 {
- # Switched to lanzaboote Secure Boot
- #  boot = {
-	# kernelParams = ["nohibernate" "ipv6.disable=1"];
-	# tmp.cleanOnBoot = true;
-	# supportedFilesystems = ["ntfs"];
-	# loader = {
-	# 	grub = {
-	# 		device = "nodev";
-	# 		efiSupport = true;
-	# 		enable = true;
-	# 		useOSProber = true;
-	# 		timeoutStyle = "menu";
- #            efiInstallAsRemovable = true;
- #            extraConfig = ''
- #                insmod tpm
- #            '';
-	# 	};
-	# 	timeout = 300;
-	# };
- #  };
-
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
+  # ARM systems don't support Secure Boot (lanzaboote), using systemd-boot instead
+  boot = {
+    kernelParams = ["nohibernate"];
+    tmp.cleanOnBoot = true;
+    supportedFilesystems = ["ntfs"];
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+        editor = false;
+      };
+      timeout = 300;
+    };
   };
 
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
+  # Disable lanzaboote for ARM systems
+  boot.lanzaboote.enable = lib.mkForce false;
 }

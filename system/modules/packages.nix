@@ -9,8 +9,8 @@
     fzf
     git
     gnumake
-  ] ++ (lib.optionals pkgs.stdenv.isx86_64 [
-    lm_sensors
+  ] ++ (lib.optionals pkgs.stdenv.isAarch64 [
+    # ARM-specific packages can be added here
   ]) ++ [
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects

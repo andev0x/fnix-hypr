@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, lib, ... }: 
 
 {
   virtualisation = {
@@ -10,8 +10,8 @@
 
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        # OVMF is not available on ARM64 systems
+        ovmf.enable = false;
       };
     };
 
@@ -31,7 +31,8 @@
     spice-protocol
     virt-manager
     virt-viewer
-    win-spice
-    win-virtio  
+    # Windows-specific packages not available on ARM
+    # win-spice
+    # win-virtio  
   ];
 }
