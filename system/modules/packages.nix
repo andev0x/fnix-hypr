@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -9,7 +9,9 @@
     fzf
     git
     gnumake
+  ] ++ (lib.optionals pkgs.stdenv.isx86_64 [
     lm_sensors
+  ]) ++ [
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtsvg
