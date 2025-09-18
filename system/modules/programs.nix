@@ -13,11 +13,12 @@
  };
 
  programs = {
-	steam = { 
-		enable = true;
-		remotePlay.openFirewall = true;
-		dedicatedServer.openFirewall = true;
-	};
+	# Steam may have limited support on ARM systems
+	# steam = { 
+	#	enable = true;
+	#	remotePlay.openFirewall = true;
+	#	dedicatedServer.openFirewall = true;
+	# };
 
     hyprland = {
         enable = true;

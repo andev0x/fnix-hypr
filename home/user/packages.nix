@@ -6,7 +6,8 @@
   home.packages = [
 
     # Dev stuff
-    pkgs.jetbrains.rider
+    # JetBrains Rider may not be available for ARM
+    # pkgs.jetbrains.rider
     pkgs.dotnet-sdk_8
     pkgs.dotnetPackages.Nuget
     pkgs.gcc
@@ -19,8 +20,9 @@
         python-pkgs.requests
     ]))
     pkgs.rustup
-    pkgs.pkgsCross.mingwW64.stdenv.cc 
-    pkgs.pkgsCross.mingwW64.windows.pthreads
+    # Cross-compilation packages not available on ARM
+    # pkgs.pkgsCross.mingwW64.stdenv.cc 
+    # pkgs.pkgsCross.mingwW64.windows.pthreads
     pkgs.zig
     
     # Work stuff
@@ -40,16 +42,18 @@
     pkgs.telegram-desktop
     pkgs-unstable.vesktop
 
-    # Gaming
+    # Gaming (some packages may have limited ARM support)
     pkgs.steam
     pkgs.steam-run
-    pkgs.yuzu-mainline
-    (pkgs.lutris.override {
-      extraPkgs = pkgs: [
-        pkgs.wineWowPackages.stable
-        pkgs.winetricks
-      ];
-    })
+    # Yuzu may not be available or work well on ARM
+    # pkgs.yuzu-mainline
+    # Lutris and Wine may have limited ARM support
+    # (pkgs.lutris.override {
+    #   extraPkgs = pkgs: [
+    #     pkgs.wineWowPackages.stable
+    #     pkgs.winetricks
+    #   ];
+    # })
 
     # Downloads
     pkgs.qbittorrent

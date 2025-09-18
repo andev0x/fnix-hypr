@@ -1,16 +1,18 @@
-# NixOS + Hyprland (Secureboot enabled)
+# NixOS + Hyprland (ARM64 Support)
 
-![SDDM screenshot](./images/sddm.png)
 
-![Hyprland screenshot](./images/image_2024-03-29_11-24-54.png)
 
-> ⚠ WARNING! This configuration uses [lanzaboote](https://github.com/nix-community/lanzaboote) for Secure boot support. If you want to use the flake and don't need secure boot, make appropriate changes in [boot.nix](./system/boot.nix).
+> ⚠ WARNING! This configuration is optimized for ARM64 (aarch64-linux) systems. Some packages may not be available or work differently on ARM compared to x86_64.
+
+> ⚠ WARNING! Secure Boot (lanzaboote) is not supported on ARM systems. The configuration uses systemd-boot instead.
 
 > ⚠ WARNING! Make sure to change [hardware-configuration.nix](./system/hardware-configuration.nix) according to your PC or generate a new one via `nixos-generate-config --root /mnt` while installing.
 
 > ⚠ WARNING! Make sure to change home paths for config files in [user](./home/config).
 
-> ⚠ WARNING! This configuration uses Podman as opposed to Docker, if you want to use dokcer make according changes in [virtualisation](./system/modules/virtualisation.nix).
+> ⚠ WARNING! This configuration uses Podman as opposed to Docker, if you want to use docker make according changes in [virtualisation](./system/modules/virtualisation.nix).
+
+> ⚠ WARNING! Some gaming packages (Steam, Lutris, Yuzu) and development tools (JetBrains Rider) may have limited ARM support or may not be available.
 
 > ⚠ WARNING! There might be some non-critical bugs in configuration as I'm still working on it.
 
@@ -24,7 +26,7 @@
 
 ## ℹ About
 
-This repository is housing my daily drive NixOS configuration using ❄️ flakes, running Hyprland. Feel free to utilize it in its entirety or borrow specific components for your own configuration.
+This repository is housing my daily drive NixOS configuration using ❄️ flakes, running Hyprland. The configuration is optimized for ARM64 (aarch64-linux) systems and includes appropriate adjustments for ARM compatibility. Feel free to utilize it in its entirety or borrow specific components for your own configuration.
 
 > Configuration is not lightweight and may require some disk space.
 
@@ -32,6 +34,7 @@ Notably, it utilizes:
 
 - **flake** (Experimental feature of the Nix package manager)
 - **nixpkgs**: unstable (only used for hyprshot & [Vesktop](https://github.com/Vencord/Vesktop))
+- **ARM64 optimized**: Boot configuration, hardware support, and package selection tailored for ARM systems
 
 ## 🔧 Components
 
